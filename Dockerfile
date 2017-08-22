@@ -1,5 +1,5 @@
 # Ubuntu 14.04 LTS
-# Oracle Java 1.8.0_11 64 bit
+# Oracle Java 1.8.0_144 64 bit
 # Maven 3.2.2
 # Jenkins latest
 # git 1.9.1
@@ -39,9 +39,14 @@ RUN apt-get install -y git
 RUN apt-get clean
 
 # set shell variables for java installation
-ENV java_version 1.8.0_11
-ENV filename jdk-8u11-linux-x64.tar.gz
-ENV downloadlink http://download.oracle.com/otn-pub/java/jdk/8u11-b12/$filename
+#ENV java_version 1.8.0_11
+#ENV filename jdk-8u11-linux-x64.tar.gz
+#ENV downloadlink http://download.oracle.com/otn-pub/java/jdk/8u11-b12/$filename
+
+ENV java_version 1.8.0_144
+ENV filename jdk-8u144-linux-x64.tar.gz
+ENV downloadlink http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/$filename
+
 
 # download java, accepting the license agreement
 RUN wget --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" -O /tmp/$filename $downloadlink 
