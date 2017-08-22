@@ -1,6 +1,6 @@
 # Ubuntu 14.04 LTS
 # Oracle Java 1.8.0_144 64 bit
-# Maven 3.2.2
+# Maven 3.5.0
 # Jenkins latest
 # git 1.9.1
 
@@ -18,17 +18,17 @@ RUN apt-get update
 # install wget
 RUN apt-get install -y wget
 
-# get maven 3.2.2
-RUN wget --no-verbose -O /tmp/apache-maven-3.2.2.tar.gz http://archive.apache.org/dist/maven/maven-3/3.2.2/binaries/apache-maven-3.2.2-bin.tar.gz
+# get maven 3.5.0
+RUN wget --no-verbose -O /tmp/apache-maven-3.5.0.tar.gz http://archive.apache.org/dist/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
 
 # verify checksum
-RUN echo "87e5cc81bc4ab9b83986b3e77e6b3095 /tmp/apache-maven-3.2.2.tar.gz" | md5sum -c
+RUN echo "87e5cc81bc4ab9b83986b3e77e6b3095 /tmp/apache-maven-3.5.0.tar.gz" | md5sum -c
 
 # install maven
-RUN tar xzf /tmp/apache-maven-3.2.2.tar.gz -C /opt/
-RUN ln -s /opt/apache-maven-3.2.2 /opt/maven
+RUN tar xzf /tmp/apache-maven-3.5.0.tar.gz -C /opt/
+RUN ln -s /opt/apache-maven-3.5.0 /opt/maven
 RUN ln -s /opt/maven/bin/mvn /usr/local/bin
-RUN rm -f /tmp/apache-maven-3.2.2.tar.gz
+RUN rm -f /tmp/apache-maven-3.5.0.tar.gz
 ENV MAVEN_HOME /opt/maven
 
 # install git
@@ -39,10 +39,6 @@ RUN apt-get install -y git
 RUN apt-get clean
 
 # set shell variables for java installation
-#ENV java_version 1.8.0_11
-#ENV filename jdk-8u11-linux-x64.tar.gz
-#ENV downloadlink http://download.oracle.com/otn-pub/java/jdk/8u11-b12/$filename
-
 ENV java_version 1.8.0_144
 ENV filename jdk-8u144-linux-x64.tar.gz
 ENV downloadlink http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/$filename
